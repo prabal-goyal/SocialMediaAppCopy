@@ -31,6 +31,7 @@ app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 app.use("/assets", express.static(path.join(__dirname, "public/assets")));
+const url = "mongodb+srv://prabal30goyal:baniya420@cluster0.wpoewy6.mongodb.net/test";
 
 /* FILE STORAGE */
 const storage = multer.diskStorage({
@@ -55,7 +56,7 @@ app.use("/posts", postRoutes);
 /* MONGOOSE SETUP */
 const PORT = process.env.PORT || 6001;
 mongoose
-  .connect("mongodb+srv://prabal30goyal:baniya420@cluster0.wpoewy6.mongodb.net/test", {
+  .connect(url, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
